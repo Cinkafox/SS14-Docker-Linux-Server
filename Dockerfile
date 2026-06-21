@@ -14,7 +14,7 @@ RUN wget https://github.com/space-wizards/SS14.Watchdog/archive/7f4a57c30588d952
     unzip Watchdog.zip -d Watchdog && \
     cd Watchdog/SS14* && \
     dotnet publish -c Release -r linux-x64 --no-self-contained && \
-    cp -rn SS14.Watchdog/bin/Release/net10.0/linux-x64/publish ${SS14_HOME}
+    cp -rn SS14.Watchdog/bin/Release/net9.0/linux-x64/publish ${SS14_HOME}
 
 WORKDIR ${SS14_HOME}
 
