@@ -46,8 +46,6 @@ This project is for those who prefer containerized solutions. It's based on the 
     First, create a `docker-compose.yml` file:
 
     ```yaml
-    version: '3'
-
     services:
       ss14-server:
         image: ghcr.io/cinkafox/ss14-docker-linux-server:main
@@ -62,8 +60,8 @@ This project is for those who prefer containerized solutions. It's based on the 
         
       restart: unless-stopped
 
-  volumes:
-    ss14_data:
+    volumes:
+      ss14_data:
     ```
 
     Then, run with:
