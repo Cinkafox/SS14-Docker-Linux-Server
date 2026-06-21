@@ -53,12 +53,11 @@ This project is for those who prefer containerized solutions. It's based on the 
         - "1212:1212/tcp"
         - "1212:1212/udp"
         - "8010:8080/tcp"
-      volumes:
-        - ss14_data:/ss14
-        - ./appsettings.yml:/ss14/appsettings.yml:ro
-        - ./server_config.toml:/ss14/instances/test/config.toml:ro
-        
-      restart: unless-stopped
+        volumes:
+          - ss14_data:/ss14
+          - ./appsettings.yml:/ss14/appsettings.yml:ro
+          - ./server_config.toml:/ss14/instances/test/config.toml:ro
+        restart: unless-stopped
 
     volumes:
       ss14_data:
