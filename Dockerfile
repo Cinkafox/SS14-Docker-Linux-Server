@@ -10,11 +10,11 @@ RUN apt-get -y update && \
     rm -rf /var/lib/apt/lists/*  
 
 # Download and build Watchdog
-RUN wget https://github.com/space-wizards/SS14.Watchdog/archive/7f4a57c30588d95281c31798c4af6ec5439ac01c.zip -O Watchdog.zip && \
+RUN wget https://github.com/space-wizards/SS14.Watchdog/archive/6194ed481a6007949b7449dcf7140a1387e2ec2f.zip -O Watchdog.zip && \
     unzip Watchdog.zip -d Watchdog && \
     cd Watchdog/SS14* && \
     dotnet publish -c Release -r linux-x64 --no-self-contained && \
-    cp -rn SS14.Watchdog/bin/Release/net9.0/linux-x64/publish ${SS14_HOME}
+    cp -rn SS14.Watchdog/bin/Release/net8.0/linux-x64/publish ${SS14_HOME}
 
 WORKDIR ${SS14_HOME}
 
