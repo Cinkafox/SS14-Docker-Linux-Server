@@ -1,5 +1,5 @@
 # Build stage
-FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 
 ENV SS14_HOME=/ss14
 ENV SS14_PUBLISH=${SS14_HOME}/publish
@@ -10,7 +10,7 @@ RUN apt-get -y update && \
     rm -rf /var/lib/apt/lists/*  
 
 # Download and build Watchdog
-RUN wget https://github.com/space-wizards/SS14.Watchdog/archive/refs/heads/master.zip -O Watchdog.zip && \
+RUN wget https://github.com/space-wizards/SS14.Watchdog/archive/7f4a57c30588d95281c31798c4af6ec5439ac01c.zip -O Watchdog.zip && \
     unzip Watchdog.zip -d Watchdog && \
     cd Watchdog/SS14* && \
     dotnet publish -c Release -r linux-x64 --no-self-contained && \
