@@ -6,7 +6,7 @@
 
 <div align="center">
 
-[![Create and publish a Docker image](https://github.com/LiamAEdwards/SS14-Docker-Linux-Server/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/LiamAEdwards/SS14-Docker-Linux-Server/actions/workflows/main.yml)
+[![Create and publish a Docker image](https://github.com/cinkafox/SS14-Docker-Linux-Server/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/cinkafox/SS14-Docker-Linux-Server/actions/workflows/main.yml)
 
 </div>
 
@@ -20,7 +20,7 @@ This project is for those who prefer containerized solutions. It's based on the 
 1. **Clone the repository**
 
     ```bash
-    git clone https://github.com/LiamAEdwards/SS14-Docker-Linux-Server.git && cd SS14-Docker-Linux-Server
+    git clone https://github.com/cinkafox/SS14-Docker-Linux-Server.git && cd SS14-Docker-Linux-Server
     ```
 
 2. **Configure Your Server**
@@ -38,7 +38,7 @@ This project is for those who prefer containerized solutions. It's based on the 
       -p 5000:5000/tcp \
       -p 5000:5000/udp \
       -v /path/on/host:/ss14 \
-      ghcr.io/liamaedwards/ss14-docker-linux-server:main
+      ghcr.io/cinkafox/ss14-docker-linux-server:main
     ```
 
     Or using Docker Compose:
@@ -50,15 +50,20 @@ This project is for those who prefer containerized solutions. It's based on the 
 
     services:
       ss14-server:
-        image: ghcr.io/liamaedwards/ss14-docker-linux-server:main
+        image: ghcr.io/cinkafox/ss14-docker-linux-server:main
         ports:
-          - "1212:1212/tcp"
-          - "1212:1212/udp"
-          - "5000:5000/tcp"
-          - "5000:5000/udp"
-        volumes:
-          - /path/on/host:/ss14
-        restart: always
+        - "1212:1212/tcp"
+        - "1212:1212/udp"
+        - "8010:8080/tcp"
+      volumes:
+        - ss14_data:/ss14
+        - ./appsettings.yml:/ss14/appsettings.yml:ro
+        - ./server_config.toml:/ss14/instances/test/config.toml:ro
+        
+      restart: unless-stopped
+
+  volumes:
+    ss14_data:
     ```
 
     Then, run with:

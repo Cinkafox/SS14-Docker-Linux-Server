@@ -40,7 +40,7 @@ key = "test"
 baseUrl = "http://localhost:8080/"
 
 [game]
-hostname = "MyServer"
+hostname = "Test Server"
 
 [console]
 # If this is true, people connecting from this machine (loopback)
